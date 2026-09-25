@@ -26,7 +26,6 @@
     /* --- 2. SCREENSAVER --- */
     #screensaver {
         position: fixed;
-        
         top: 0; left: 0; width: 100%; height: 100%;
         background-color: black;
         z-index: 5000;
@@ -286,8 +285,7 @@
     </div>
 
     <div id="menu">
-        
-        
+        <img src="hcc-logo.jpg" alt="HCC Logo" style="width: 280px; margin-bottom: 10px;">
 
         <h1>Welcome to the Library Nest</h1>
         <p class="subtitle">Your gateway to research, resources, and academic success</p>
@@ -299,7 +297,6 @@
         </div>
 
         <div class="pill-row">
-            
             <button class="pill-btn" onclick="openPage('https://library.hccs.edu/research_writing/style_guides')">
                 Citation Station
             </button>
@@ -315,14 +312,12 @@
             <button class="pill-btn" onclick="openPage('https://cdnapisec.kaltura.com/p/417271/sp/41727100/embedIframeJs/uiconf_id/2832761/partner_id/417271?iframeembed=true&playerId=kaltura_player&entry_id=0_c82jkiip&flashvars[streamerType]=auto')">
                 How to Print
             </button>
-
         </div>
 
         <div class="magazine-divider"></div>
         <div class="magazine-label">Tap a Magazine to Read on Your Phone</div>
 
         <div class="magazine-grid">
-            
             <img class="mag-cover" src="https://d2jv02qf7xgjwx.cloudfront.net/accounts/358453/images/national_geographic.png" 
                  onclick="openQR('https://flipster.ebsco.com/c/bm4kf4/results?limiters=&type=0&db=eon&q=HJ+NGE&auth-callid=462b1a66-e322-46e9-bfc6-627574c6851ae', 'National Geographic')">
 
@@ -347,16 +342,15 @@
             <div class="view-all-box" onclick="openQR('https://flipster.ebsco.com/c/bm4kf4', 'All Magazines')">
                 View All<br>Magazines
             </div>
-
         </div>
     </div>
 
     <div id="universal-modal">
         <div class="modal-box">
-            <!-- Upgraded the exit button to be wide and clearly labeled -->
             <button class="close-btn" onclick="closeAll()"><span>✕</span> Close</button>
             
-            <iframe id="content-frame" src="about:blank" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"></iframe>
+            <!-- Sandbox added here to block popups -->
+            <iframe id="content-frame" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"></iframe>
 
             <div id="qr-container">
                 <img id="qr-image" src="" alt="Scan QR Code">
