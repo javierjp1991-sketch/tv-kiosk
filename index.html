@@ -276,6 +276,7 @@
 
     <div id="menu">
         
+        <img src="hcc-logo.jpg" alt="HCC Logo" style="width: 280px; margin-bottom: 10px;">
 
         <h1>Welcome to the Library Nest</h1>
         <p class="subtitle">Your gateway to research, resources, and academic success</p>
@@ -298,6 +299,11 @@
 
             <button class="pill-btn" onclick="openQR('https://research.ebsco.com/c/34a5lu/search/results?limiters=&q=&auth-callid=ced22907-cb29-45df-956d-647702b4fcb4', 'Search Catalog')">
                 Catalog Search
+            </button>
+
+            <!-- New How to Print Button -->
+            <button class="pill-btn" onclick="openPage('https://cdnapisec.kaltura.com/p/417271/sp/41727100/embedIframeJs/uiconf_id/2832761/partner_id/417271?iframeembed=true&playerId=kaltura_player&entry_id=0_c82jkiip&flashvars[streamerType]=auto')">
+                How to Print
             </button>
 
         </div>
@@ -339,7 +345,8 @@
         <div class="modal-box">
             <button class="close-btn" onclick="closeAll()">✕</button>
             
-            <iframe id="content-frame" src="about:blank"></iframe>
+            <!-- Updated iframe with requested permissions for Kaltura video playback -->
+            <iframe id="content-frame" src="about:blank" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"></iframe>
 
             <div id="qr-container">
                 <img id="qr-image" src="" alt="Scan QR Code">
@@ -402,6 +409,19 @@
             clearTimeout(idleTimer);
             idleTimer = setTimeout(resetToScreensaver, 60000);
         }
+
+        // Listener for Kaltura player events to auto-close the iframe when the video ends
+        window.addEventListener("message", function(event) {
+            try {
+                var msg = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                // Checks for standard Kaltura player completion messages
+                if (msg && (msg.method === 'playerPlayedComplete' || msg.event === 'playerPlayedComplete' || msg.name === 'playerPlayedComplete')) {
+                    closeAll();
+                }
+            } catch (e) {
+                // Silently ignore other cross-domain message parsing errors
+            }
+        });
 
         document.body.addEventListener('click', resetTimer);
         document.body.addEventListener('touchstart', resetTimer);
