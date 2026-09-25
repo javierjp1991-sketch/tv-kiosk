@@ -232,16 +232,26 @@
 
     .close-btn {
         position: absolute;
-        top: 20px; right: 20px;
+        top: 15px; right: 20px;
         background: #cc0000;
         color: white;
         border: none;
-        width: 45px; height: 45px;
-        border-radius: 50%;
+        padding: 10px 25px;
+        border-radius: 30px;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 1.2rem;
         cursor: pointer;
         z-index: 100;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    .close-btn:hover {
+        background: #ff3333;
+        transform: scale(1.05);
     }
 
     iframe { width: 100%; height: 100%; border: none; display: none; }
@@ -301,7 +311,6 @@
                 Catalog Search
             </button>
 
-            <!-- New How to Print Button -->
             <button class="pill-btn" onclick="openPage('https://cdnapisec.kaltura.com/p/417271/sp/41727100/embedIframeJs/uiconf_id/2832761/partner_id/417271?iframeembed=true&playerId=kaltura_player&entry_id=0_c82jkiip&flashvars[streamerType]=auto')">
                 How to Print
             </button>
@@ -343,9 +352,9 @@
 
     <div id="universal-modal">
         <div class="modal-box">
-            <button class="close-btn" onclick="closeAll()">✕</button>
+            <!-- Upgraded the exit button to be wide and clearly labeled -->
+            <button class="close-btn" onclick="closeAll()"><span>✕</span> Close</button>
             
-            <!-- Updated iframe with requested permissions for Kaltura video playback -->
             <iframe id="content-frame" src="about:blank" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"></iframe>
 
             <div id="qr-container">
@@ -409,19 +418,6 @@
             clearTimeout(idleTimer);
             idleTimer = setTimeout(resetToScreensaver, 60000);
         }
-
-        // Listener for Kaltura player events to auto-close the iframe when the video ends
-        window.addEventListener("message", function(event) {
-            try {
-                var msg = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-                // Checks for standard Kaltura player completion messages
-                if (msg && (msg.method === 'playerPlayedComplete' || msg.event === 'playerPlayedComplete' || msg.name === 'playerPlayedComplete')) {
-                    closeAll();
-                }
-            } catch (e) {
-                // Silently ignore other cross-domain message parsing errors
-            }
-        });
 
         document.body.addEventListener('click', resetTimer);
         document.body.addEventListener('touchstart', resetTimer);
