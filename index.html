@@ -213,7 +213,7 @@
 
     .modal-box { 
         width: 90%; 
-        max-width: 800px; /* Widened slightly to accommodate the image */
+        max-width: 800px; 
         height: 85vh; 
         padding: 40px; 
         background: white; 
@@ -242,12 +242,12 @@
     
     iframe { width: 100%; height: 100%; border: none; display: none; }
     
-    /* New Dedicated Image Viewer for JPEGs */
+    /* Dedicated Image Viewer for JPEGs */
     #content-image {
         display: none;
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Automatically shrinks to fit within the box */
+        object-fit: contain; 
         border-radius: 8px;
     }
     
@@ -291,13 +291,15 @@
 
     <!-- ADA: Screensaver converted to a button for keyboard interaction -->
     <button id="screensaver" onclick="showMenu()" aria-label="Start Library Nest Experience" tabindex="0">
-        <!-- Explictly forcing local directory lookup -->
-        <img src="./screensaver.png" alt="" aria-hidden="true">
+        <img src="screensaver.png" alt="" aria-hidden="true">
         <div id="screensaver-text" aria-hidden="true">Click to continue</div>
     </button>
 
     <!-- ADA: Main content area marked semantically -->
     <main id="menu" aria-hidden="true">
+        <!-- Make sure hcc-logo.jpg is also uploaded to your GitHub repository -->
+        <img src="hcc-logo.jpg" alt="HCC Logo" style="width: 280px; margin-bottom: 10px;">
+        
         <h1>Welcome to the Library Nest</h1>
         <p class="subtitle">Your gateway to research, resources, and academic success</p>
 
@@ -310,8 +312,8 @@
             <button class="pill-btn" onclick="openPage('https://library.hccs.edu/about_us/events')">Events</button>
             <button class="pill-btn" onclick="openQR('https://research.ebsco.com/c/34a5lu/search/results?limiters=&q=&auth-callid=ced22907-cb29-45df-956d-647702b4fcb4', 'Library Catalog')">Catalog Search</button>
             
-            <!-- NEW: Uses the openImage function to perfectly scale the static JPEG -->
-            <button class="pill-btn" onclick="openImage('./printing-guide.jpg', 'How to Print Guide')">How to Print</button>
+            <!-- Uses the openImage function to properly fit the static JPEG -->
+            <button class="pill-btn" onclick="openImage('printing-guide.jpg', 'How to Print Guide')">How to Print</button>
         </nav>
 
         <!-- ADA: Interactive images wrapped in buttons for keyboard access -->
@@ -359,7 +361,7 @@
             <!-- Standard URL iframe Viewer -->
             <iframe id="content-frame" title="Library Resource Content" src="about:blank"></iframe>
 
-            <!-- NEW: Dedicated Image Viewer for the Printing Guide -->
+            <!-- Dedicated Image Viewer for the Printing Guide -->
             <img id="content-image" src="" alt="Viewing Document">
             
             <div id="qr-container">
@@ -414,7 +416,7 @@
             resetTimer(); 
         }
 
-        // NEW: Handles local JPEGs explicitly to prevent zoom/scroll issues
+        // Handles local JPEGs explicitly to prevent zoom/scroll issues
         function openImage(url, altText) {
             lastFocusedElement = document.activeElement;
             qrContainer.style.display = 'none'; 
