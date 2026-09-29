@@ -214,7 +214,7 @@
     .modal-box { 
         width: 90%; 
         max-width: 600px;
-        height: auto;
+        height: 85vh; /* Gives the iframe more vertical space for the image */
         padding: 40px; 
         background: white; 
         border-radius: 15px; 
@@ -240,7 +240,7 @@
         z-index: 100; 
     }
     
-    iframe { width: 100%; height: 80vh; border: none; }
+    iframe { width: 100%; height: 100%; border: none; }
     
     #qr-container { 
         display: none; 
@@ -282,7 +282,8 @@
     <!-- ADA: Screensaver converted to a button for keyboard interaction -->
     <button id="screensaver" onclick="showMenu()" aria-label="Start Library Nest Experience" tabindex="0">
         <!-- ADA: Decorative image hidden from screen readers -->
-        <img src="screensaver.gif" alt="" aria-hidden="true">
+        <img src="screensaver.png
+            " alt="" aria-hidden="true">
         <div id="screensaver-text" aria-hidden="true">Click to continue</div>
     </button>
 
@@ -300,8 +301,8 @@
             <button class="pill-btn" onclick="openPage('https://library.hccs.edu/about_us/events')">Events</button>
             <button class="pill-btn" onclick="openQR('https://research.ebsco.com/c/34a5lu/search/results?limiters=&q=&auth-callid=ced22907-cb29-45df-956d-647702b4fcb4', 'Library Catalog')">Catalog Search</button>
             
-            <!-- Updated How to Print Button linking to the PDF -->
-            <button class="pill-btn" onclick="openPage('Library Printing Guide (2).pdf')">How to Print</button>
+            <!-- Updated How to Print Button linking to the requested JPEG image -->
+            <button class="pill-btn" onclick="openPage('printing-guide.jpg')">How to Print</button>
         </nav>
 
         <!-- ADA: Interactive images wrapped in buttons for keyboard access -->
