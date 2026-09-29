@@ -161,7 +161,7 @@
         height: 170px;
         width: auto;
         border-radius: 5px;
-        display: block; /* prevents bottom gap inside button */
+        display: block;
     }
 
     .magazine-cover-btn:hover {
@@ -214,7 +214,7 @@
     .modal-box { 
         width: 90%; 
         max-width: 600px;
-        height: 85vh; /* Gives the iframe more vertical space for the image */
+        height: 85vh; 
         padding: 40px; 
         background: white; 
         border-radius: 15px; 
@@ -281,9 +281,8 @@
 
     <!-- ADA: Screensaver converted to a button for keyboard interaction -->
     <button id="screensaver" onclick="showMenu()" aria-label="Start Library Nest Experience" tabindex="0">
-        <!-- ADA: Decorative image hidden from screen readers -->
-        <img src="screensaver.png
-            " alt="" aria-hidden="true">
+        <!-- ADA: Decorative image hidden from screen readers. Updated to screensaver.png -->
+        <img src="screensaver.png" alt="" aria-hidden="true">
         <div id="screensaver-text" aria-hidden="true">Click to continue</div>
     </button>
 
@@ -301,7 +300,7 @@
             <button class="pill-btn" onclick="openPage('https://library.hccs.edu/about_us/events')">Events</button>
             <button class="pill-btn" onclick="openQR('https://research.ebsco.com/c/34a5lu/search/results?limiters=&q=&auth-callid=ced22907-cb29-45df-956d-647702b4fcb4', 'Library Catalog')">Catalog Search</button>
             
-            <!-- Updated How to Print Button linking to the requested JPEG image -->
+            <!-- Updated How to Print Button linking to printing-guide.jpg -->
             <button class="pill-btn" onclick="openPage('printing-guide.jpg')">How to Print</button>
         </nav>
 
